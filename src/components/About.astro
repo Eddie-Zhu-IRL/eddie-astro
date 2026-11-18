@@ -1,0 +1,56 @@
+---
+const interests = [
+  "Reserving",
+  "Ratemaking",
+  "Data Science",
+  "Problem Solving",
+];
+---
+
+<section id="about" class="py-20 sm:py-28">
+  <div class="max-w-3xl mx-auto px-6">
+
+    <p class="text-sm text-gray-500 mb-3">
+      A little introduction
+    </p>
+
+    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight mb-8">
+      About Me
+    </h2>
+
+    <div class="space-y-5 text-gray-600 leading-8">
+      <p>
+        Hi! I'm <span class="text-gray-900 font-medium">Your Name</span>,
+        a student and aspiring professional passionate about technology,
+        software development, and building meaningful things.
+      </p>
+
+      <p>
+        I'm interested in exploring how technology can solve real-world
+        problems. Through academic work and personal projects, I'm
+        continuously developing my technical skills and learning new
+        technologies.
+      </p>
+
+      <p>
+        Outside of my studies, I enjoy experimenting with new ideas,
+        contributing to projects, and sharing what I learn along the way.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <h3 class="text-sm font-semibold text-gray-900 mb-4">
+        Areas of Interest
+      </h3>
+
+      <div class="flex flex-wrap gap-2">
+        {interests.map((interest) => (
+          <span class="px-3 py-1.5 text-sm rounded-full border border-gray-200 text-gray-600">
+            {interest}
+          </span>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>

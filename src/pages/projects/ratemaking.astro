@@ -1,0 +1,413 @@
+
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout
+  title="Ratemaking | Eddie Zhu"
+  description="Ratemaking"
+>
+
+  <!-- PROJECT INTRODUCTION -->
+
+  <section class="project-hero">
+    <div class="container">
+
+      <a href="/projects" class="back-link">
+        ← Back to Projects
+      </a>
+
+      <p class="eyebrow">Insurance Ratemaking</p>
+
+      <h1>Insurance Pricing using Generalized Linear Models (GLMs)</h1>
+
+      <p class="subtitle">
+        An end-to-end actuarial pricing workflow using the norauto motor 
+        insurance dataset from the CASdatasets package, to estimate the expected 
+        claim cost for each policyholder through Frequency, Severity, Pure Premium, Gross Premium.
+      </p>
+
+      <div class="technologies">
+        <span>Python</span>
+        <span>R</span>
+        <span>GLM</span>
+      </div>
+
+      <a
+        href="https://github.com/Eddie-Zhu-IRL/Motor-Insurance-Pricing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button"
+      >
+        View GitHub Repository ↗
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- PROJECT OBJECTIVE -->
+
+  <section class="section">
+    <div class="container">
+
+      <h2>1. Project Objective</h2>
+
+      <p>
+        This project demonstrates an end-to-end actuarial pricing workflow using the norauto motor insurance dataset from the CASdatasets package.
+      </p>
+
+      <p>
+        The objective is to estimate the expected claim cost for each policyholder by modelling:
+        <ul>
+          <li>Frequency</li>
+          <li>Severity</li>
+          <li>Pure Premium</li>
+          <li>Gross Premium</li>
+        </ul>
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- METHODOLOGY -->
+
+  <section class="section alternate">
+    <div class="container">
+
+      <h2>2. Actuarial Methodology</h2>
+
+      <p>
+        Motor insurers must determine premiums that adequately reflect each policyholder's 
+        expected future claims while covering operating expenses and generating a target level of profit.
+      </p>
+
+      <p>
+        Generalized Linear Models (GLMs) is used to estimate expected claim costs and convert them into insurance premiums. 
+        Gross premiums are estimated by incorporating expense loadings and target profit margins into the expected claim costs.
+      </p>
+
+      <div class="method-grid">
+
+        <article>
+          <h3>EDA & Feature Engineering</h3>
+          <ul>
+            <li>Feature Engineering: relevel factor variables</li>
+            <li>Data Summary: frequency and severity on independent variables</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>Frequency Modelling</h3>
+          <ul>
+            <li>Poisson Regression</li>
+            <li>Negative Binomial Regression</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>Severity Modelling</h3>
+          <ul>
+            <li>Gamma GLM</li>
+            <li>Lognormal GLM</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>Pure Premium & Gross Premium</h3>
+          <ul>
+            <li>Pure Premium = Frequency * Severity</li>
+            <li>Gross Premium = Pure Premium / Permissible Loss Ratio</li>
+          </ul>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- IMPLEMENTATION -->
+
+  <section class="section">
+    <div class="container">
+
+      <h2>3. Technical Implementation</h2>
+
+      <div class="implementation-grid">
+
+        <article>
+          <h3>GLM</h3>
+          <p>
+            Modelling:
+          <ul>
+            <li>Frequency - Poisson, Negative Binomial</li>
+            <li>Severity - Gamma, LogNormal</li>
+          </ul>
+          </p>
+
+          <p>
+            Metric: AIC, BIC, MSE
+          </p>
+        </article>
+
+        <article>
+          <h3>R</h3>
+          <p>
+            Data processing, visualization and GLM using following libraries:
+            <ul>
+              <li>stats</li>
+              <li>MASS</li>
+              <li>tidyverse</li>
+            </ul>
+          </p>
+        </article>
+
+        <article>
+          <h3>Python</h3>
+          <p>
+            Data processing, visualization and GLM using following packages.
+            <ul>
+              <li>pandas</li>
+              <li>matplotlib</li>
+              <li>statsmodels</li>
+            </ul>
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- VALIDATION -->
+
+  <section class="section alternate">
+    <div class="container">
+
+      <h2>4. Summary and Output Visuals</h2>
+
+      <p>
+        The predicted aggregate pure premium was approximately 2.8% higher than the observed portfolio loss, 
+        indicating good agreement between the selected frequency and severity models by R. Model by R 
+        over-estimates loss while model by Python under-estimates loss by 0.4%. A gap of this size is 
+        consistent with the two languages using different random splits, since claim counts and large 
+        losses in a 20% test set vary from split to split.
+      </p>
+      <img
+      src="/images/pricing/headline_results.png"
+      alt="headline_results"
+      class="headline_results"
+      />
+
+      <p>
+        The pure premium represents the expected claim cost only. In practice, insurers must also account 
+        for operating expenses, commissions, reinsurance costs, regulatory requirements, and target profit 
+        when determining the final premium charged to customers. Gross premium was estimated by applying a 
+        permissible loss ratio assumption of 70%, implying that expected claims represent 70% of the premium collected.
+      </p>
+      
+      <p>
+        For the R model, a mean pure premium of €1,132 and a gross premium of €1,617 per test policy.
+      </p>
+      
+      <ul>
+        <li>R Output</li>
+        <img
+        src="/images/pricing/summary_r.png"
+        alt="summary_r"
+        class="summary_r"
+        />
+
+        <li>Python Output</li>
+        <img
+        src="/images/pricing/summary_python.png"
+        alt="summary_python"
+        class="summary_python"
+        />
+      </ul>
+
+      <p>
+        Predicted Pure Premium vs Actual Loss by Gender, Young_26YO, DistLimit and GeoRegion is plotted using R and Python.
+        Differences in final premium estimates were caused by different random train/test partitions between R and 
+        Python rather than modelling differences.
+      </p>
+      
+      <ul>
+        <li>R Visuals</li>
+        <img
+        src="/images/pricing/pred_act_r.png"
+        alt="pred_act_r"
+        class="pred_act_r"
+        />
+
+        <li>Python Visuals</li>
+        <img
+        src="/images/pricing/pred_act_python.png"
+        alt="pred_act_python"
+        class="pred_act_python"
+        />
+      </ul>
+
+    </div>
+  </section>
+
+
+  <!-- LEARNING -->
+
+  <section class="section">
+    <div class="container">
+
+      <h2>5. Skills Developed</h2>
+
+      <div class="skills-list">
+        <span>Python</span>
+        <span>R</span>
+        <span>Ratemaking</span>
+        <span>Frequency</span>
+        <span>Severity</span>
+        <span>Pure Premium</span>
+        <span>Gross Premium</span>
+        <span>Visualization</span>
+        <span>Validation</span>
+        <span>Actuarial Analysis</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- GITHUB -->
+
+  <section class="project-contact">
+    <div class="container">
+
+      <h2>Explore the Project</h2>
+
+      <p>
+        View the ratemaking model, Python and R scripts, calculations
+        and technical documentation on GitHub.
+      </p>
+
+      <a
+        href="https://github.com/Eddie-Zhu-IRL/Motor-Insurance-Pricing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button"
+      >
+        Visit GitHub Repository ↗
+      </a>
+
+    </div>
+  </section>
+
+</MainLayout>
+
+
+<style>
+  .project-hero {
+    background: var(--color-navy);
+    color: white;
+    padding: 75px 0;
+  }
+
+  .back-link {
+    color: #BFDBFE;
+    display: inline-block;
+    margin-bottom: 35px;
+  }
+
+  .eyebrow {
+    color: #93C5FD;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .project-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    max-width: 850px;
+  }
+
+  .subtitle {
+    max-width: 750px;
+    color: #DCE6F3;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .technologies,
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 25px 0;
+  }
+
+  .technologies span,
+  .skills-list span {
+    background: #EFF6FF;
+    color: #1D4ED8;
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+  }
+
+  .method-grid,
+  .implementation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .method-grid article,
+  .implementation-grid article {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 22px;
+  }
+
+  h2 {
+    color: var(--color-navy);
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    color: var(--color-navy);
+  }
+
+  .alternate {
+    background: #EDF2F8;
+  }
+
+  .section p,
+  .section li {
+    color: var(--color-muted);
+    line-height: 1.8;
+  }
+
+  .project-contact {
+    background: var(--color-navy);
+    color: white;
+    text-align: center;
+    padding: 65px 0;
+  }
+
+  .project-contact h2 {
+    color: white;
+  }
+
+  .project-contact p {
+    color: #DCE6F3;
+  }
+
+  @media (max-width: 650px) {
+    .method-grid,
+    .implementation-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

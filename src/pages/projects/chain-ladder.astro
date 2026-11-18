@@ -1,0 +1,425 @@
+
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout
+  title="Loss Reserve Chain Ladder Model | Eddie Zhu"
+  description="An actuarial claims reserving project using Excel, R and Python."
+>
+
+  <!-- PROJECT INTRODUCTION -->
+
+  <section class="project-hero">
+    <div class="container">
+
+      <a href="/projects" class="back-link">
+        ← Back to Projects
+      </a>
+
+      <p class="eyebrow">ACTUARIAL RESERVING</p>
+
+      <h1>Loss Reserve Chain Ladder Model</h1>
+
+      <p class="subtitle">
+        Developing an Excel-based actuarial reserving model
+        and independently validating calculations using R
+        and Python.
+      </p>
+
+      <div class="technologies">
+        <span>Excel</span>
+        <span>VBA</span>
+        <span>R</span>
+        <span>Python</span>
+        <span>Chain Ladder</span>
+      </div>
+
+      <a
+        href="https://github.com/Eddie-Zhu-IRL/Loss-Reserve-Chain-Ladder-Model"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button"
+      >
+        View GitHub Repository ↗
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- PROJECT OBJECTIVE -->
+
+  <section class="section">
+    <div class="container">
+
+      <h2>1. Project Objective</h2>
+
+      <p>
+        Claims reserving is an important actuarial process
+        in general insurance. Insurers need to estimate
+        outstanding claims liabilities for claims that have
+        occurred but have not yet been fully settled.
+      </p>
+
+      <p>
+        The objective of this project is to develop an
+        Excel-based reserving tool using the Chain Ladder
+        method to estimate ultimate claims and outstanding
+        reserves from historical claims development data.
+      </p>
+
+      <ul>
+        <li>Construct cumulative loss development triangles from historical claims data. </li>
+        <li>Calculate Age-to-Age Loss Development Factors. </li>
+        <li>Estimate Age-to-Ultimate Factors. </li>
+        <li>Project Ultimate Losses using the Chain Ladder method. </li>
+        <li>Estimate Outstanding Reserves and IBNR. </li>
+        <li>Validate reserving calculations by independently implementing the methodology in Excel, VBA, Python and R. </li>
+
+      </ul>
+
+    </div>
+  </section>
+
+
+  <!-- METHODOLOGY -->
+
+  <section class="section alternate">
+    <div class="container">
+
+      <h2>2. Actuarial Methodology</h2>
+
+      <p>
+        The Chain Ladder method uses historical claims
+        development patterns to estimate future claims
+        development.
+
+        This project uses the Casualty Actuarial Society (CAS) PP Auto Data Set (.csv), updated December 2025.  
+        <a href="https://www.casact.org/publications-research/research/research-resources/loss-reserving-data-pulled-naic-schedule-p">
+          <strong>(CAS: PP Auto)</strong> 
+        </a>
+      </p>
+
+      <div class="method-grid">
+
+        <article>
+          <h3>Claims Development Triangle</h3>
+          <p>
+            Organise historical cumulative claims by
+            accident year and development period.
+          </p>
+        </article>
+
+        <article>
+          <h3>Age-to-Age Factors</h3>
+          <p>
+            Calculate development factors from successive
+            development periods.
+          </p>
+        </article>
+
+        <article>
+          <h3>Cumulative Development Factors</h3>
+          <p>
+            Calculate cumulative development factors
+            (CDFs) to project losses to ultimate.
+          </p>
+        </article>
+
+        <article>
+          <h3>Ultimate Losses and Reserves</h3>
+          <p>
+            Estimate ultimate losses and derive outstanding
+            reserves by comparing ultimate and observed
+            cumulative losses.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- IMPLEMENTATION -->
+
+  <section class="section">
+    <div class="container">
+
+      <h2>3. Technical Implementation</h2>
+
+      <div class="implementation-grid">
+
+        <article>
+          <h3>Loss Triangle: Excel Built-in Functions</h3>
+          <p>
+            This implementation demonstrates a fully dynamic reserving model without requiring manual recalculation.
+            Features include:
+            <ul>
+            <li>Dynamic loss development triangle.</li>
+            <li>Dynamic accident year expansion.</li>
+            <li>Named Ranges.</li>
+            <li>INDEX/MATCH.</li>
+            <li>SUMIFS.</li>
+            <li>Conditional Formatting.</li>
+            <li>Automatic recalculation of reserving metrics.</li>
+            </ul>
+          </p>
+        </article>
+
+        <article>
+          <h3>Loss Triangle: VBA</h3>
+          <p>
+            The VBA version automates Loss Triangle and LDF workflow..
+            Features include:
+            <ul>
+            <li>Loss Data: user can use dynamic data filtering from dropdown list, and extract filtered data for further analysis.</li>
+            <li>Loss Triangle: create triangle.</li>
+            <li>LDF: Arithmetic AVG & Vol-Weighted AVG: calculate LDF using simple arithmetic average and volume-weighted average.</li>
+            <li>Summary: consolidate earned premiums, incurred losses, cumulative paid loss, calculted Age-to-Ult LDF, Ult Losses, IBNR.</li>
+            </ul>
+          </p>
+        </article>
+
+        <article>
+          <h3>R</h3>
+          <p>
+            Use the ChainLadder package to independently
+            calculate reserving outputs and compare
+            development factors and estimates.
+          </p>
+        </article>
+
+        <article>
+          <h3>Python</h3>
+          <p>
+            Implement an independent computational
+            comparison of the Excel model outputs.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- VALIDATION -->
+
+  <section class="section alternate">
+    <div class="container">
+
+      <h2>4. Results Validation and Testing</h2>
+
+      <ul>
+        <h3>4.1 Triangle construction and LDF </h3>
+
+        <li>Excel Built-in Functions</li>
+        <img
+          src="/images/reserving/triangle_excel.png"
+          alt="triangle_excel"
+          class="triangle_excel"
+        />
+
+        <li>VBA</li>
+        <img
+          src="/images/reserving/triangle_vba.png"
+          alt="triangle_vba"
+          class="triangle_vba"
+        />
+
+      </ul>
+
+      <ul>
+        <h3>4.2 Ultimate Loss Estimation and IBNR </h3>
+
+        <li>Excel Built-in Functions</li>
+        <img
+          src="/images/reserving/summary_excel.png"
+          alt="summary_excel"
+          class="summary_excel"
+        />
+
+        <li>VBA</li>
+        <img
+          src="/images/reserving/summary_vba.png"
+          alt="summary_vba"
+          class="summary_vba"
+        />
+
+        <li>Python</li>
+        <img
+          src="/images/reserving/summary_python.png"
+          alt="summary_python"
+          class="summary_python"
+        />
+
+        <li>R</li>
+        <img
+          src="/images/reserving/summary_r.png"
+          alt="summary_r"
+          class="summary_r"
+        />
+
+      </ul>
+
+    </div>
+  </section>
+
+
+  <!-- LEARNING -->
+
+  <section class="section">
+    <div class="container">
+
+      <h2>5. Skills Developed</h2>
+
+      <div class="skills-list">
+        <span>Reserving</span>
+        <span>Chain Ladder</span>
+        <span>Loss Development</span>
+        <span>Excel Modelling</span>
+        <span>VBA</span>
+        <span>R</span>
+        <span>Python</span>
+        <span>Model Validation</span>
+        <span>Actuarial Analysis</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- GITHUB -->
+
+  <section class="project-contact">
+    <div class="container">
+
+      <h2>Explore the Project</h2>
+
+      <p>
+        View the Excel model, outpus from R and Python for reconciliation, supporting calculations
+        and technical documentation on GitHub.
+      </p>
+
+      <a
+        href="https://github.com/Eddie-Zhu-IRL/Loss-Reserve-Chain-Ladder-Model"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button"
+      >
+        Visit GitHub Repository ↗
+      </a>
+
+    </div>
+  </section>
+
+</MainLayout>
+
+
+<style>
+  .project-hero {
+    background: var(--color-navy);
+    color: white;
+    padding: 75px 0;
+  }
+
+  .back-link {
+    color: #BFDBFE;
+    display: inline-block;
+    margin-bottom: 35px;
+  }
+
+  .eyebrow {
+    color: #93C5FD;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .project-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    max-width: 850px;
+  }
+
+  .subtitle {
+    max-width: 750px;
+    color: #DCE6F3;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .technologies,
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 25px 0;
+  }
+
+  .technologies span,
+  .skills-list span {
+    background: #EFF6FF;
+    color: #1D4ED8;
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+  }
+
+  .method-grid,
+  .implementation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .method-grid article,
+  .implementation-grid article {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 22px;
+  }
+
+  h2 {
+    color: var(--color-navy);
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    color: var(--color-navy);
+  }
+
+  .alternate {
+    background: #EDF2F8;
+  }
+
+  .section p,
+  .section li {
+    color: var(--color-muted);
+    line-height: 1.8;
+  }
+
+  .project-contact {
+    background: var(--color-navy);
+    color: white;
+    text-align: center;
+    padding: 65px 0;
+  }
+
+  .project-contact h2 {
+    color: white;
+  }
+
+  .project-contact p {
+    color: #DCE6F3;
+  }
+
+  @media (max-width: 650px) {
+    .method-grid,
+    .implementation-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

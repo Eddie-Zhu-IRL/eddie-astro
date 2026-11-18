@@ -1,0 +1,70 @@
+
+<header class="site-header">
+  <div class="container nav-container">
+
+    <a href="/" class="logo">
+      Actuarial Portfolio
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/projects">Projects</a>
+      <a href="/skills">Skills</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav-container {
+    min-height: 76px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .logo {
+    color: var(--color-navy);
+    font-size: 1.15rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  nav {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+  }
+
+  nav a {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  nav a:hover {
+    color: var(--color-blue);
+  }
+
+  @media (max-width: 650px) {
+    .nav-container {
+      flex-direction: column;
+      justify-content: center;
+      padding: 16px 0;
+    }
+
+    nav {
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+</style>

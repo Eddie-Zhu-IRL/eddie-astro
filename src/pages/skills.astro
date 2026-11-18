@@ -1,0 +1,449 @@
+
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+const skillGroups = [
+  {
+    title: "Actuarial Science & Insurance",
+    description:
+      "Actuarial and insurance concepts explored through professional study and independent practical projects.",
+    skills: [
+      "Claims Reserving",
+      "Chain Ladder Method",
+      "Ultimate Loss Estimation",
+      "IBNR",
+      "Insurance Pricing",
+      "GLM",
+      "Insurance Reporting",
+      "Portfolio Analysis",
+      "Executive Dashboards",
+    ],
+  },
+  {
+    title: "Statistics & Data Analysis",
+    description:
+      "Statistical knowledge supported by postgraduate education and applied analytical work.",
+    skills: [
+      "Statistical Analysis",
+      "Statistical Modelling",
+      "Regression Analysis",
+      "Data Analysis",
+      "Data Interpretation",
+      "Data Quality Checks",
+      "Reconciliation",
+      "Process Automation",
+      "Data Visualisation",
+    ],
+  },
+  {
+    title: "Data & Technical Tools",
+    description:
+      "Technical tools used to process, analyse, model and present data across independent projects.",
+    skills: [
+      "Microsoft Excel",
+      "VBA",
+      "Power Query",
+      "Power BI",
+      "DAX",
+      "R",
+      "Python",
+      "SQL",
+    ],
+  },
+];
+
+const applications = [
+  {
+    title: "Loss Reserve Chain Ladder Model",
+    category: "RESERVING",
+    detail:
+      "Developed an Excel-based Chain Ladder reserving model, including age-to-ultimate loss development factors, ultimate loss estimates and IBNR calculations. Compared model outputs with R and Python implementations.",
+    tools: "Excel · VBA · R · Python",
+    href: "/projects/chain-ladder",
+  },
+  {
+    title: "Insurance Portfolio Analysis By Power BI",
+    category: "INSURANCE REPORTING",
+    detail:
+      "Built an interactive Power BI dashboard to analyse a motor insurance portfolio, exploring loss ratios, claim frequency, claim severity and pure premiums across risk segments.",
+    tools: "Power BI · Power Query · DAX",
+    href: "/projects/dashboard",
+  },
+  {
+    title: "Actuarial Pricing in Motor Insurance",
+    category: "RATEMAKING",
+    detail:
+      "Developed an independent motor insurance pricing workflow using frequency and severity modelling to estimate pure premiums and gross premiums at policyholder level.",
+    tools: "Python · R · GLM",
+    href: "/projects/ratemaking",
+  },
+  {
+    title: "Banking Report ETL",
+    category: "PROCESS AUTOMATION",
+    detail:
+      "Used Power Query to automate the import and transformation of seven daily fixed-width banking text reports into structured datasets.",
+    tools: "Excel · Power Query · ETL",
+    href: "/projects/banking-etl",
+  },
+  {
+    title: "Weather Data Volunteering",
+    category: "DATA QUALITY & VOLUNTEERING",
+    detail:
+      "Contributed to transcribing historical weather-data and developed Excel-based quality checks and reconciliation, alongside a VBA macro to clear input cells.",
+    tools: "Excel · VBA · Data Quality",
+    href: "https://irishweatherrescue.ie/",
+  },
+];
+---
+
+<MainLayout title="Skills | Eddie Zhu"
+            description="Actuarial, statistical and technical skills developed through postgraduate education, professional study and independent projects."
+>
+
+  <!-- PAGE INTRODUCTION -->
+  <section class="section">
+    <div class="container">
+
+      <div class="page-intro">
+        <p class="eyebrow">CAPABILITIES</p>
+
+        <h1>Skills & Technical Knowledge</h1>
+
+        <p class="intro-text">
+          My background combines education in statistics,
+          insurance administration experience and ongoing development
+          of actuarial and data analytics skills through independent
+          projects, professional study and practical applications.
+        </p>
+      </div>
+
+      <!-- SKILL CATEGORIES -->
+      <div class="skills-grid">
+
+        {skillGroups.map((group) => (
+          <article class="skill-card">
+
+            <h2>{group.title}</h2>
+
+            <p>{group.description}</p>
+
+            <div class="skill-tags">
+              {group.skills.map((skill) => (
+                <span>{skill}</span>
+              ))}
+            </div>
+
+          </article>
+        ))}
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- PRACTICAL APPLICATION -->
+  <section class="section applications-section">
+    <div class="container">
+
+      <div class="applications-intro">
+        <p class="eyebrow">PRACTICAL APPLICATION</p>
+
+        <h2>Putting Skills into Practice</h2>
+
+        <p class="section-intro">
+          Examples of how I have applied statistical, actuarial
+          and technical skills through independent projects
+          and volunteering.
+        </p>
+      </div>
+
+      <div class="application-list">
+
+        {applications.map((project) => (
+          <article class="application-card">
+
+            <div class="application-content">
+
+              <p class="application-category">
+                {project.category}
+              </p>
+
+              <h3>{project.title}</h3>
+
+              <p class="application-detail">
+                {project.detail}
+              </p>
+
+              <div class="application-tools">
+                {project.tools.split(" · ").map((tool) => (
+                  <span>{tool}</span>
+                ))}
+              </div>
+
+            </div>
+
+            <a
+              href={project.href}
+              target={project.href.startsWith("http") ? "_blank" : undefined}
+              rel={project.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              class="application-link"
+            >
+              View project →
+            </a>
+
+          </article>
+        ))}
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- NEXT STEP -->
+  <section class="section">
+    <div class="container">
+
+      <div class="skills-cta">
+
+        <div>
+          <p class="eyebrow">EXPLORE MY WORK</p>
+
+          <h2>See these skills in practice</h2>
+
+          <p>
+            Explore my project portfolio for more details on
+            the actuarial, insurance and data analytics work
+            behind these examples.
+          </p>
+        </div>
+
+        <a href="/projects" class="cta-link">
+          View All Projects →
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+</MainLayout>
+
+
+<style>
+
+  /* PAGE INTRODUCTION */
+
+  .page-intro {
+    max-width: 800px;
+    margin-bottom: 42px;
+  }
+
+  .eyebrow {
+    color: #2563eb;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+
+  .page-intro h1 {
+    color: #142b49;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    line-height: 1.2;
+    margin: 12px 0 20px;
+  }
+
+  .intro-text,
+  .section-intro {
+    color: #64748b;
+    line-height: 1.8;
+    font-size: 1.02rem;
+  }
+
+
+  /* SKILLS GRID */
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .skill-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 26px;
+  }
+
+  .skill-card h2 {
+    color: #142b49;
+    font-size: 1.25rem;
+    margin: 0 0 12px;
+  }
+
+  .skill-card p {
+    color: #64748b;
+    line-height: 1.7;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 20px;
+  }
+
+  .skill-tags span {
+    background: #eff6ff;
+    color: #1e40af;
+    border-radius: 20px;
+    padding: 7px 12px;
+    font-size: 0.83rem;
+  }
+
+
+  /* PRACTICAL APPLICATION */
+
+  .applications-section {
+    background: #edf2f8;
+  }
+
+  .applications-intro {
+    max-width: 780px;
+    margin-bottom: 30px;
+  }
+
+  .applications-intro h2 {
+    color: #142b49;
+    font-size: 1.7rem;
+    margin: 10px 0;
+  }
+
+  .application-list {
+    display: grid;
+    gap: 18px;
+  }
+
+  .application-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .application-content {
+    flex: 1;
+  }
+
+  .application-category {
+    color: #2563eb;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin: 0 0 10px;
+  }
+
+  .application-card h3 {
+    color: #142b49;
+    font-size: 1.15rem;
+    margin: 0 0 10px;
+  }
+
+  .application-detail {
+    color: #64748b;
+    line-height: 1.7;
+    margin: 0 0 16px;
+  }
+
+  .application-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .application-tools span {
+    background: #f1f5f9;
+    color: #475569;
+    border-radius: 5px;
+    padding: 5px 9px;
+    font-size: 0.8rem;
+  }
+
+  .application-link {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .application-link:hover {
+    text-decoration: underline;
+  }
+
+
+  /* PROJECT CTA */
+
+  .skills-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 32px;
+    background: #f1f5f9;
+    border-radius: 12px;
+  }
+
+  .skills-cta h2 {
+    color: #142b49;
+    font-size: 1.6rem;
+    margin: 8px 0;
+  }
+
+  .skills-cta p:not(.eyebrow) {
+    color: #64748b;
+    line-height: 1.7;
+    max-width: 650px;
+    margin-bottom: 0;
+  }
+
+  .cta-link {
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .cta-link:hover {
+    text-decoration: underline;
+  }
+
+
+  /* RESPONSIVE DESIGN */
+
+  @media (max-width: 750px) {
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .application-card {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .skills-cta {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+  }
+
+</style>

@@ -1,0 +1,124 @@
+
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+const links = [
+  {
+    name: "GitHub",
+    description: "Explore my projects and code repositories.",
+    url: "https://github.com/Eddie-Zhu-IRL",
+  },
+  {
+    name: "LinkedIn",
+    description: "Connect with me and view my professional background.",
+    url: "https://www.linkedin.com/in/jingfeng-z-irl/",
+  },
+];
+---
+
+<MainLayout title="Contact | Eddie Zhu">
+  <section class="contact-section">
+    <p class="eyebrow">GET IN TOUCH</p>
+    <h1>Let's Connect</h1>
+
+    <p class="intro">
+      I'm interested in connecting with professionals working in
+      actuarial science, insurance, statistics and data analytics.
+      Feel free to explore my projects or connect with me through
+      the links below.
+    </p>
+
+    <div class="contact-links">
+      {links.map((link) => (
+        <a
+          class="contact-card"
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div>
+            <h2>{link.name}</h2>
+            <p>{link.description}</p>
+          </div>
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+
+    <p class="closing">
+      Thank you for visiting my portfolio.
+    </p>
+  </section>
+</MainLayout>
+
+<style>
+  .contact-section {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    color: #2563eb;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  h1 {
+    color: #142b49;
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    margin: 12px 0;
+  }
+
+  .intro {
+    color: #64748b;
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  .contact-links {
+    display: grid;
+    gap: 16px;
+    margin-top: 34px;
+  }
+
+  .contact-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .contact-card:hover {
+    border-color: #2563eb;
+    transform: translateY(-2px);
+  }
+
+  .contact-card h2 {
+    color: #142b49;
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .contact-card p {
+    color: #64748b;
+    margin: 8px 0 0;
+    line-height: 1.6;
+  }
+
+  .contact-card span {
+    color: #2563eb;
+    font-size: 1.4rem;
+  }
+
+  .closing {
+    margin-top: 36px;
+    color: #64748b;
+  }
+</style>

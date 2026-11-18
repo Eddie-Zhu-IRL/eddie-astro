@@ -1,0 +1,371 @@
+
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout
+  title="Banking Report ETL with Power Query | Eddie Zhu"
+  description="Executive Dashboard project using Power BI, Power Query."
+>
+
+  <!-- PROJECT INTRODUCTION -->
+
+  <section class="project-hero">
+    <div class="container">
+
+      <a href="/projects" class="back-link">
+        ← Back to Projects
+      </a>
+
+      <p class="eyebrow">PROCESS AUTOMATION</p>
+
+      <h1>Banking Report ETL with Power Query</h1>
+
+      <p class="subtitle">
+        Excel Power Query ETL pipeline that imports, transforms, 
+        and standardizes multiple simulated banking txt-based daily 
+        reports into structured datasets for reporting and further analysis.
+      </p>
+
+      <div class="technologies">
+        <span>Excel</span>
+        <span>Power Query</span>
+        <span>ETL</span>
+      </div>
+
+      <a
+        href="https://github.com/Eddie-Zhu-IRL/banking-report-etl-powerquery"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button"
+      >
+        View GitHub Repository ↗
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- PROJECT OBJECTIVE -->
+
+  <section class="section">
+    <div class="container">
+
+      <h2>1. Project Objective</h2>
+
+      <p>
+        This project is a Power Query-based ETL pipeline designed to 
+        simulate a real-world banking reporting system. It processes 
+        multiple structured txt-based reports, transforms them into 
+        clean Excel tables, and prepares them for further analysis in Excel.
+      </p>
+
+      <p>
+        The solution demonstrates how Excel can be used as a lightweight data 
+        engineering tool for batch report processing. Key steps are one parameter 
+        change and one Refresh All instead of regular manual Text Import Wizard steps for every report.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- METHODOLOGY -->
+
+  <section class="section alternate">
+    <div class="container">
+
+      <h2>2. Business Problem and Why Power Query</h2>
+
+      <p>
+        Steps when importing data were repeated for seven reports each business day by hand. 
+        The break lines and formats have to be set again each time and different staff placed 
+        the break lines and formatted columns in various ways, which lacked in consistency.
+      </p>
+
+      <div class="method-grid">
+
+        <article>
+          <h3>The Problem</h3>
+          <p>
+            Operation admin downloaded seven daily reports from system and processed them using Excel for analysis. 
+            Each report was prepared in the following way,
+          </p>
+
+          <ul>
+          <li>Open the txt-based file in Excel.</li>
+          <li>Text Import Wizard,</li>
+          <ol>step 1: choose Fixed width</ol>
+          <ol>step 2: click to place column break lines at the right character positions</ol>
+          <ol>step 3: set the data format of each column</ol>
+          <li>Finish.</li>
+          <li>Delete the report header and footer by hand. Or re-format and/or calculate columns as required.</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>Why Power Query</h3>
+          <p>
+            The operations team has no access to SQL, Python or other data processing tools, 
+            and uses Excel at a basic level. Built into Excel, Power Query makes the daily 
+            import a single parameter change and one click of Refresh All, with no coding needed to run the process.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- IMPLEMENTATION -->
+
+  <section class="section">
+    <div class="container">
+
+      <h2>3. Technical Implementation</h2>
+      
+      <div class="implementation-grid">
+
+        <article>
+          <h3>Excel</h3>
+          <p>
+            Access to Power Query, store reports processed by Power Query.
+          </p>
+          
+        </article>
+
+        <article>
+          <h3>Power Query</h3>
+          <p>
+            Set up parameter 'Path', identify rows by rules, process fixed-width columns, output processed reports to Excel sheet.
+          </p>
+        </article>
+
+      </div>
+
+      <article>
+          <h3>Architecture</h3>
+          <img
+            src="/images/banking/architecture.png"
+            alt="Technical architecture of the Chain Ladder reserving model"
+            class="architecture-image"
+           />
+
+        </article>
+
+    </div>
+  </section>
+
+
+  <!-- SOLUTION -->
+
+  <section class="section alternate">
+    <div class="container">
+
+      <h2>4. The Solution</h2>
+
+      <p>
+        A pipeline by Power Query is created in one Excel workbook with following steps,
+         to show how repetitive manual processing could be made more efficient and 
+         consistent with the existing tool constrains:
+      </p>
+
+      <ul>
+        <li>Creates defined parameter Path to the folder for current working day, such as ~./14102026.</li>
+        <li>Reads each report from the day's folder -- 14102026.</li>
+        <li>Creates Target Rows Indicator for data rows, and drops header rows, footer rows and non-data rows.</li>
+        <li>Splits the fixed-width lines of data into columns based on position, trims the text, applies appropriate data types and renames columns.</li>
+        <li>Loads each report to its own sheet for further analysis.</li>
+      </ul>
+
+      <article>
+          <h3>Comparison between Manual Steps and Power Query</h3>
+          <img
+            src="/images/banking/before_after.png"
+            alt="before_after steps"
+            class="before_after steps"
+           />
+
+        </article>
+
+      <article>
+          <h3>New Workflow</h3>
+      <ul>
+        <li>New daily reports are downloaded into a folder, eg 14102026.</li>
+        <li>Folder path is set via Manage Parameters in Power Query.</li>
+        <li>In Excel, Data -> "Refresh All” to launch data import process.</li>
+        <li>All reports are loaded into Excel sheets automatically.</li>
+      </ul>
+        </article>
+
+      <article>
+          <h3>Files Inventory</h3>
+          <img
+            src="/images/banking/files_inventory.png"
+            alt="files_inventory"
+            class="files_inventory"
+           />
+
+        </article>
+
+    </div>
+  </section>
+
+
+
+  <!-- LEARNING -->
+
+  <section class="section">
+    <div class="container">
+
+      <h2>5. Skills Developed</h2>
+
+      <div class="skills-list">
+        <span>Excel</span>
+        <span>Power Query</span>
+        <span>Data Analytics</span>
+        <span>ETL</span>
+        <span>Automation</span>
+        <span>Reconciliation</span>
+        <span>Problem Solving</span>
+        <span>Efficiency</span>
+        <span>Consistency</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- GITHUB -->
+
+  <section class="project-contact">
+    <div class="container">
+
+      <h2>Explore the Project</h2>
+
+      <p>
+        View the Excel and Power Query model, detailed steps
+        and technical documentation on GitHub.
+      </p>
+
+      <a
+        href="https://github.com/Eddie-Zhu-IRL/banking-report-etl-powerquery"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button"
+      >
+        Visit GitHub Repository ↗
+      </a>
+
+    </div>
+  </section>
+
+</MainLayout>
+
+
+<style>
+  .project-hero {
+    background: var(--color-navy);
+    color: white;
+    padding: 75px 0;
+  }
+
+  .back-link {
+    color: #BFDBFE;
+    display: inline-block;
+    margin-bottom: 35px;
+  }
+
+  .eyebrow {
+    color: #93C5FD;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .project-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    max-width: 850px;
+  }
+
+  .subtitle {
+    max-width: 750px;
+    color: #DCE6F3;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .technologies,
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 25px 0;
+  }
+
+  .technologies span,
+  .skills-list span {
+    background: #EFF6FF;
+    color: #1D4ED8;
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+  }
+
+  .method-grid,
+  .implementation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .method-grid article,
+  .implementation-grid article {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 22px;
+  }
+
+  h2 {
+    color: var(--color-navy);
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    color: var(--color-navy);
+  }
+
+  .alternate {
+    background: #EDF2F8;
+  }
+
+  .section p,
+  .section li {
+    color: var(--color-muted);
+    line-height: 1.8;
+  }
+
+  .project-contact {
+    background: var(--color-navy);
+    color: white;
+    text-align: center;
+    padding: 65px 0;
+  }
+
+  .project-contact h2 {
+    color: white;
+  }
+
+  .project-contact p {
+    color: #DCE6F3;
+  }
+
+  @media (max-width: 650px) {
+    .method-grid,
+    .implementation-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

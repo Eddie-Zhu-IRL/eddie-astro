@@ -1,0 +1,123 @@
+
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const projects = [
+  {
+    title: "Loss Reserve Chain Ladder Model",
+    category: "Actuarial Reserving",
+    description:
+      "An Excel-based actuarial reserving model applying the Chain Ladder method to estimate ultimate claims and outstanding reserves. The calculations are independently compared with outputs by R and Python implementations.",
+    technologies: ["Excel", "VBA", "R", "Python", "Chain Ladder"],
+    href: "/projects/chain-ladder",
+    linkLabel: "Explore case study"
+  },
+  {
+    title: "Insurance Portfolio Analysis By Power BI",
+    category: "Insurance Reporting",
+    description:
+      "An interactive Power BI dashboard analysing a motor insurance portfolio, including portfolio characteristics, policy information and business performance - loss ratio, claim frequency, severity and pure premium by risk segment.",
+    technologies: ["Power BI", "Power Query", "DAX", "Data Modelling"],
+    href: "/projects/dashboard",
+    linkLabel: "Explore case study"
+  },
+  {
+    title: "Actuarial Pricing in Motor Insurance",
+    category: "Insurance Ratemaking",
+    description:
+      "An end-to-end actuarial pricing workflow using the norauto motor insurance dataset from the CASdatasets package, to estimate the expected claim cost for each policyholder through Frequency, Severity, Pure Premium, Gross Premium.",
+    technologies: ["Python", "R", "GLM"],
+    href: "/projects/ratemaking",
+    linkLabel: "Explore case study"
+  },
+  {
+    title: "Banking Report ETL with Power Query",
+    category: "Process Automation",
+    description:
+      "An automated Power Query workflow transforming seven daily fixed-width banking text reports into structured datasets, replacing repetitive manual Excel import steps.",
+    technologies: ["Excel", "Power Query", "ETL"],
+    href: "/projects/banking-etl",
+    linkLabel: "Explore case study"
+  },
+  {
+    title: "Irish Weather Rescue",
+    category: "Data Quality Control & Volunteering & Reconciliation",
+    description:
+      "A volunteering project involving historical weather observation transcription. Initiate a quick Excel-based process of data input quality check, reconciliation and a VBA macro for clearing previous data inputs.",
+    technologies: ["Excel", "VBA", "Data Quality"],
+    href: "https://irishweatherrescue.ie",
+    linkLabel: "Go to IrishWeatherRescue"
+  }
+];
+---
+
+<MainLayout
+  title="Projects | Eddie Zhu"
+  description="Actuarial modelling, insurance analytics and data automation projects."
+>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow"></p>
+      <h1>My Projects</h1>
+      <p>
+        Exploring practical applications of actuarial science,
+        statistical modelling, insurance analytics and
+        data automation.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="project-grid">
+        {projects.map((project, index) => (
+          <ProjectCard
+            {...project}
+            featured={index === 0}
+          />
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+</MainLayout>
+
+<style>
+  .page-intro {
+    background: var(--color-navy);
+    color: white;
+    padding: 75px 0;
+  }
+
+  .page-intro .eyebrow {
+    color: #93C5FD;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .page-intro h1 {
+    font-size: 3rem;
+    margin: 10px 0;
+  }
+
+  .page-intro p:last-child {
+    max-width: 700px;
+    color: #DCE6F3;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  @media (max-width: 700px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,281 @@
+
+
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+const highlights = [
+  {
+    title: "MSc in Statistics",
+    category: "EDUCATION",
+    detail:
+      "Providing a foundation in statistical methods, quantitative analysis and data interpretation.",
+  },
+  {
+    title: "SOA Examination Progress",
+    category: "ACTUARIAL EXAMINATIONS",
+    detail:
+      "Passed Probability, Financial Mathematics and Statistics for Risk Modeling (SRM). Completed the VEE requirement in Mathematical Statistics.",
+  },
+  {
+    title: "CAS Essential Program",
+    category: "PROFESSIONAL DEVELOPMENT",
+    detail:
+      "Completed the Casualty Actuarial Society's Essential Program in April 2026.",
+  },
+  {
+    title: "Abacus Actuaries Student Program",
+    category: "PROFESSIONAL DEVELOPMENT",
+    detail:
+      "Completed the 2026 programme, exploring actuarial career paths, professional communication and networking.",
+  },
+  {
+    title: "WTW Actuarial Day",
+    category: "PROFESSIONAL DEVELOPMENT",
+    detail:
+      "Participated in a two-day online event covering actuarial career insights, networking, interview preparation and professional development.",
+  },
+  {
+    title: "Irish Weather Rescue",
+    category: "VOLUNTEERING",
+    detail:
+      "Contribute to transcribing historical weather-data, using Excel-based quality checks and reconciliation to support data accuracy.",
+  },
+];
+---
+
+<MainLayout title="About | Eddie Zhu"
+            description="Background in statistics and insurance administration, actuarial development, professional learning and independent projects."
+>
+
+  <!-- INTRODUCTION -->
+  <section class="section">
+    <div class="container">
+
+      <div class="about-intro">
+        <p class="eyebrow">ABOUT ME</p>
+
+        <h1>Statistics, Insurance & Actuarial Development</h1>
+
+        <p>
+          I hold an MSc in Statistics and have professional experience
+          in insurance and loans administration. My academic background
+          and industry experience have shaped my interest in applying
+          statistical methods, analytical thinking and technology to
+          insurance and actuarial problems.
+        </p>
+
+        <p>
+          I am developing my actuarial knowledge through professional
+          examinations, independent projects and continued learning.
+          My particular interests include claims reserving, insurance
+          pricing, statistical modelling and insurance analytics.
+        </p>
+
+        <p>
+          Through projects using Excel, VBA, R, Python and Power BI,
+          I explore practical applications of actuarial and analytical
+          techniques. These projects also allow me to develop my
+          technical skills and demonstrate my approach to solving
+          data-related problems.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- EDUCATION & PROFESSIONAL DEVELOPMENT -->
+  <section class="section highlights-section">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow">EDUCATION & DEVELOPMENT</p>
+        <h2>Professional Development</h2>
+        <p class="section-description">
+          Academic qualifications, actuarial examination progress,
+          professional programmes and volunteering.
+        </p>
+      </div>
+
+      <div class="highlight-grid">
+        {highlights.map((item) => (
+          <article class="highlight-card">
+
+            <p class="highlight-category">{item.category}</p>
+
+            <h3>{item.title}</h3>
+
+            <p class="highlight-detail">{item.detail}</p>
+
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- PROJECT PORTFOLIO CTA -->
+  <section class="section">
+    <div class="container">
+
+      <div class="about-cta">
+        <div>
+          <p class="eyebrow">MY PORTFOLIO</p>
+          <h2>Explore my work</h2>
+
+          <p>
+            Discover independent projects covering claims reserving,
+            insurance pricing, portfolio analysis and data automation.
+          </p>
+        </div>
+
+        <a href="/projects" class="cta-link">
+          View Projects →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</MainLayout>
+
+
+<style>
+  /* INTRODUCTION */
+
+  .about-intro {
+    max-width: 850px;
+  }
+
+  .eyebrow {
+    color: #2563eb;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+
+  .about-intro h1 {
+    color: #142b49;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    line-height: 1.2;
+    margin: 12px 0 26px;
+  }
+
+  .about-intro p:not(.eyebrow) {
+    color: #475569;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+
+  /* PROFESSIONAL DEVELOPMENT */
+
+  .highlights-section {
+    background: #edf2f8;
+  }
+
+  .section-heading {
+    max-width: 750px;
+    margin-bottom: 32px;
+  }
+
+  .section-heading h2 {
+    color: #142b49;
+    font-size: 1.8rem;
+    margin: 10px 0;
+  }
+
+  .section-description {
+    color: #64748b;
+    line-height: 1.7;
+  }
+
+  .highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .highlight-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 24px;
+  }
+
+  .highlight-category {
+    color: #2563eb;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin: 0 0 12px;
+  }
+
+  .highlight-card h3 {
+    color: #142b49;
+    font-size: 1.1rem;
+    margin: 0 0 12px;
+  }
+
+  .highlight-detail {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+
+  /* PROJECT CTA */
+
+  .about-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 32px;
+    background: #f1f5f9;
+    border-radius: 12px;
+  }
+
+  .about-cta h2 {
+    color: #142b49;
+    font-size: 1.6rem;
+    margin: 8px 0;
+  }
+
+  .about-cta p:not(.eyebrow) {
+    color: #64748b;
+    line-height: 1.7;
+    max-width: 650px;
+    margin-bottom: 0;
+  }
+
+  .cta-link {
+    display: inline-block;
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .cta-link:hover {
+    text-decoration: underline;
+  }
+
+
+  /* RESPONSIVE DESIGN */
+
+  @media (max-width: 750px) {
+    .highlight-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-cta {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>
